@@ -1,0 +1,106 @@
+version: 2
+executorType: docker
+jobs:
+  build_node_4_8_3:
+    docker:
+      - image: node:4.8.3
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js || echo 'no crash'
+  build_node_4_8_3_alpine:
+    docker:
+      - image: node:4.8.3-alpine
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js || echo 'no crash'
+  build_node_6_5:
+    docker:
+      - image: node:6.5
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_6_7:
+    docker:
+      - image: node:6.7
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_6_10_3:
+    docker:
+      - image: node:6.10.3
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_6_10_3_alpine:
+    docker:
+      - image: node:6.10.3-alpine
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_6_10_3_slim:
+    docker:
+      - image: node:6.10.3-slim
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_6_11_1:
+    docker:
+      - image: node:6.11.1
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js
+  build_node_7_10_1:
+    docker:
+      - image: node:7.10.1
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js || echo 'no crash'
+  build_node_8_0_0:
+    docker:
+      - image: node:8.0.0
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js || echo 'no crash'
+  build_node_8_0_0_alpine:
+    docker:
+      - image: node:8.0.0-alpine
+    working_directory: ~/Dashboard
+    steps:
+      - checkout
+      - run:
+          command: ./crash.js || echo 'no crash'
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_node_4_8_3
+      - build_node_4_8_3_alpine
+      - build_node_6_11_1
+      - build_node_6_10_3
+      - build_node_6_10_3_alpine
+      - build_node_6_10_3_slim
+      - build_node_6_7
+      - build_node_6_5
+      - build_node_7_10_1
+      - build_node_8_0_0
+      - build_node_8_0_0_alpine
