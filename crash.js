@@ -3,14 +3,8 @@
 'use strict';
 /* eslint-disable no-useless-computed-key */
 
-try {
-  crashEntry();
-} catch (e) {
-  console.log(e);
-  process.exit(0);
-}
-console.log('no crash');
-process.exit(1);
+crashEntry();
+process.exit(0);
 
 function crashEntry() {
   weirdBootstrap();
